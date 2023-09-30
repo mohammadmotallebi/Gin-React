@@ -1,9 +1,11 @@
 'use client'
 import React, {Suspense, useEffect} from 'react';
-import Table from './Table';
+import T1 from './t1';
+import T2 from './t2';
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import Menu from "@components/Menu";
 import Loading from "./loading";
+import Grid from "@mui/material/Unstable_Grid2";
 
 
 export default function (){
@@ -19,9 +21,18 @@ export default function (){
     return (
         <ThemeProvider theme={dark}>
             <Menu>
+                <Grid container spacing={4}>
+                    <Grid md>
                 <Suspense fallback={<Loading/>}>
-<Table/>
+                        <T1/>
                 </Suspense>
+                </Grid>
+                    <Grid md>
+                        <Suspense fallback={<Loading/>}>
+                            <T2/>
+                        </Suspense>
+                    </Grid>
+                </Grid>
             </Menu>
         </ThemeProvider>
     )
